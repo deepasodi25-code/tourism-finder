@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Warm amber/orange as primary, teal as accent */
+    --background: 0.97 0.01 80;
+    --foreground: 0.18 0.03 40;
+
+    --card: 0.99 0.005 90;
+    --card-foreground: 0.18 0.03 40;
+
+    --popover: 0.99 0.005 90;
+    --popover-foreground: 0.18 0.03 40;
+
+    /* Primary: rich amber/orange */
+    --primary: 0.65 0.18 50;
+    --primary-foreground: 0.99 0 0;
+
+    /* Secondary: warm sand */
+    --secondary: 0.92 0.04 70;
+    --secondary-foreground: 0.25 0.04 40;
+
+    /* Muted: soft warm gray */
+    --muted: 0.93 0.02 75;
+    --muted-foreground: 0.52 0.03 60;
+
+    /* Accent: teal */
+    --accent: 0.62 0.12 195;
+    --accent-foreground: 0.99 0 0;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.03 70;
+    --input: 0.88 0.03 70;
+    --ring: 0.65 0.18 50;
+
+    /* Chart colors */
+    --chart-1: 0.65 0.18 50;
+    --chart-2: 0.62 0.12 195;
+    --chart-3: 0.55 0.15 160;
+    --chart-4: 0.75 0.16 85;
+    --chart-5: 0.6 0.2 30;
+
+    /* Sidebar */
+    --sidebar: 0.97 0.01 80;
+    --sidebar-foreground: 0.18 0.03 40;
+    --sidebar-primary: 0.65 0.18 50;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.92 0.04 70;
+    --sidebar-accent-foreground: 0.25 0.04 40;
+    --sidebar-border: 0.88 0.03 70;
+    --sidebar-ring: 0.65 0.18 50;
+
+    /* Tourism specific tokens */
+    --hero-overlay: 0.12 0.06 40;
+    --star-filled: 0.75 0.18 65;
+    --star-empty: 0.85 0.04 75;
+    --badge-hotel: 0.7 0.14 250;
+    --badge-museum: 0.65 0.16 310;
+    --badge-park: 0.6 0.15 145;
+    --badge-beach: 0.65 0.15 215;
+    --badge-landmark: 0.65 0.18 50;
+    --badge-restaurant: 0.6 0.2 30;
+  }
+
+  .dark {
+    --background: 0.16 0.03 40;
+    --foreground: 0.95 0.02 75;
+
+    --card: 0.22 0.04 40;
+    --card-foreground: 0.95 0.02 75;
+
+    --popover: 0.26 0.04 40;
+    --popover-foreground: 0.95 0.02 75;
+
+    --primary: 0.72 0.18 55;
+    --primary-foreground: 0.12 0.03 40;
+
+    --secondary: 0.28 0.04 45;
+    --secondary-foreground: 0.92 0.02 75;
+
+    --muted: 0.28 0.03 45;
+    --muted-foreground: 0.65 0.04 65;
+
+    --accent: 0.62 0.12 195;
+    --accent-foreground: 0.99 0 0;
+
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 1 0 0 / 12%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.72 0.18 55;
+
+    --sidebar: 0.22 0.04 40;
+    --sidebar-foreground: 0.95 0.02 75;
+    --sidebar-primary: 0.72 0.18 55;
+    --sidebar-primary-foreground: 0.12 0.03 40;
+    --sidebar-accent: 0.28 0.04 45;
+    --sidebar-accent-foreground: 0.92 0.02 75;
+    --sidebar-border: 1 0 0 / 12%;
+    --sidebar-ring: 0.72 0.18 55;
+
+    --star-filled: 0.75 0.18 65;
+    --star-empty: 0.4 0.04 65;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -4px oklch(0.18 0.06 40 / 0.18);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(var(--muted)) 25%,
+      oklch(var(--secondary)) 50%,
+      oklch(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s ease-in-out infinite;
+  }
+}
